@@ -14,22 +14,9 @@
 		FA0AB5D318057C0100A9D85C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0AB5D218057C0100A9D85C /* main.m */; };
 		FA0AB5D718057C0100A9D85C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0AB5D618057C0100A9D85C /* AppDelegate.m */; };
 		FA0AB5D918057C0100A9D85C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA0AB5D818057C0100A9D85C /* Images.xcassets */; };
-		FA0AB5E018057C0100A9D85C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AB5DF18057C0100A9D85C /* XCTest.framework */; };
-		FA0AB5E118057C0100A9D85C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AB5C618057C0100A9D85C /* Foundation.framework */; };
-		FA0AB5E218057C0100A9D85C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AB5CA18057C0100A9D85C /* UIKit.framework */; };
-		FA0AB5EA18057C0100A9D85C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0AB5E818057C0100A9D85C /* InfoPlist.strings */; };
-		FA0AB5EC18057C0100A9D85C /* SegmentedContainerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0AB5EB18057C0100A9D85C /* SegmentedContainerDemoTests.m */; };
+		FA0AB5F718057C4700A9D85C /* SegmentedContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0AB5F618057C4700A9D85C /* SegmentedContainer.m */; };
+		FA0AB5FA18057C5C00A9D85C /* ContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0AB5F918057C5C00A9D85C /* ContentsViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		FA0AB5E318057C0100A9D85C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA0AB5BB18057C0100A9D85C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FA0AB5C218057C0100A9D85C;
-			remoteInfo = SegmentedContainerDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FA0AB5C318057C0100A9D85C /* SegmentedContainerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SegmentedContainerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,11 +30,11 @@
 		FA0AB5D518057C0100A9D85C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FA0AB5D618057C0100A9D85C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FA0AB5D818057C0100A9D85C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FA0AB5DE18057C0100A9D85C /* SegmentedContainerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SegmentedContainerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0AB5DF18057C0100A9D85C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		FA0AB5E718057C0100A9D85C /* SegmentedContainerDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SegmentedContainerDemoTests-Info.plist"; sourceTree = "<group>"; };
-		FA0AB5E918057C0100A9D85C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FA0AB5EB18057C0100A9D85C /* SegmentedContainerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedContainerDemoTests.m; sourceTree = "<group>"; };
+		FA0AB5F518057C4700A9D85C /* SegmentedContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedContainer.h; sourceTree = "<group>"; };
+		FA0AB5F618057C4700A9D85C /* SegmentedContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedContainer.m; sourceTree = "<group>"; };
+		FA0AB5F818057C5C00A9D85C /* ContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsViewController.h; sourceTree = "<group>"; };
+		FA0AB5F918057C5C00A9D85C /* ContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,16 +48,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA0AB5DB18057C0100A9D85C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA0AB5E018057C0100A9D85C /* XCTest.framework in Frameworks */,
-				FA0AB5E218057C0100A9D85C /* UIKit.framework in Frameworks */,
-				FA0AB5E118057C0100A9D85C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				FA0AB5CC18057C0100A9D85C /* SegmentedContainerDemo */,
-				FA0AB5E518057C0100A9D85C /* SegmentedContainerDemoTests */,
 				FA0AB5C518057C0100A9D85C /* Frameworks */,
 				FA0AB5C418057C0100A9D85C /* Products */,
 			);
@@ -88,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				FA0AB5C318057C0100A9D85C /* SegmentedContainerDemo.app */,
-				FA0AB5DE18057C0100A9D85C /* SegmentedContainerDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +84,10 @@
 			children = (
 				FA0AB5D518057C0100A9D85C /* AppDelegate.h */,
 				FA0AB5D618057C0100A9D85C /* AppDelegate.m */,
+				FA0AB5F518057C4700A9D85C /* SegmentedContainer.h */,
+				FA0AB5F618057C4700A9D85C /* SegmentedContainer.m */,
+				FA0AB5F818057C5C00A9D85C /* ContentsViewController.h */,
+				FA0AB5F918057C5C00A9D85C /* ContentsViewController.m */,
 				FA0AB5D818057C0100A9D85C /* Images.xcassets */,
 				FA0AB5CD18057C0100A9D85C /* Supporting Files */,
 			);
@@ -122,24 +101,6 @@
 				FA0AB5CF18057C0100A9D85C /* InfoPlist.strings */,
 				FA0AB5D218057C0100A9D85C /* main.m */,
 				FA0AB5D418057C0100A9D85C /* SegmentedContainerDemo-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FA0AB5E518057C0100A9D85C /* SegmentedContainerDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				FA0AB5EB18057C0100A9D85C /* SegmentedContainerDemoTests.m */,
-				FA0AB5E618057C0100A9D85C /* Supporting Files */,
-			);
-			path = SegmentedContainerDemoTests;
-			sourceTree = "<group>";
-		};
-		FA0AB5E618057C0100A9D85C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FA0AB5E718057C0100A9D85C /* SegmentedContainerDemoTests-Info.plist */,
-				FA0AB5E818057C0100A9D85C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -164,24 +125,6 @@
 			productReference = FA0AB5C318057C0100A9D85C /* SegmentedContainerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FA0AB5DD18057C0100A9D85C /* SegmentedContainerDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FA0AB5F218057C0100A9D85C /* Build configuration list for PBXNativeTarget "SegmentedContainerDemoTests" */;
-			buildPhases = (
-				FA0AB5DA18057C0100A9D85C /* Sources */,
-				FA0AB5DB18057C0100A9D85C /* Frameworks */,
-				FA0AB5DC18057C0100A9D85C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FA0AB5E418057C0100A9D85C /* PBXTargetDependency */,
-			);
-			name = SegmentedContainerDemoTests;
-			productName = SegmentedContainerDemoTests;
-			productReference = FA0AB5DE18057C0100A9D85C /* SegmentedContainerDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -190,11 +133,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Alex Robinson";
-				TargetAttributes = {
-					FA0AB5DD18057C0100A9D85C = {
-						TestTargetID = FA0AB5C218057C0100A9D85C;
-					};
-				};
 			};
 			buildConfigurationList = FA0AB5BE18057C0100A9D85C /* Build configuration list for PBXProject "SegmentedContainerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -209,7 +147,6 @@
 			projectRoot = "";
 			targets = (
 				FA0AB5C218057C0100A9D85C /* SegmentedContainerDemo */,
-				FA0AB5DD18057C0100A9D85C /* SegmentedContainerDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -224,14 +161,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA0AB5DC18057C0100A9D85C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA0AB5EA18057C0100A9D85C /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -239,42 +168,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0AB5FA18057C5C00A9D85C /* ContentsViewController.m in Sources */,
+				FA0AB5F718057C4700A9D85C /* SegmentedContainer.m in Sources */,
 				FA0AB5D718057C0100A9D85C /* AppDelegate.m in Sources */,
 				FA0AB5D318057C0100A9D85C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA0AB5DA18057C0100A9D85C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA0AB5EC18057C0100A9D85C /* SegmentedContainerDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FA0AB5E418057C0100A9D85C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FA0AB5C218057C0100A9D85C /* SegmentedContainerDemo */;
-			targetProxy = FA0AB5E318057C0100A9D85C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FA0AB5CF18057C0100A9D85C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FA0AB5D018057C0100A9D85C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		FA0AB5E818057C0100A9D85C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA0AB5E918057C0100A9D85C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -380,48 +287,6 @@
 			};
 			name = Release;
 		};
-		FA0AB5F318057C0100A9D85C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SegmentedContainerDemo.app/SegmentedContainerDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SegmentedContainerDemo/SegmentedContainerDemo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "SegmentedContainerDemoTests/SegmentedContainerDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		FA0AB5F418057C0100A9D85C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SegmentedContainerDemo.app/SegmentedContainerDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SegmentedContainerDemo/SegmentedContainerDemo-Prefix.pch";
-				INFOPLIST_FILE = "SegmentedContainerDemoTests/SegmentedContainerDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -439,14 +304,6 @@
 			buildConfigurations = (
 				FA0AB5F018057C0100A9D85C /* Debug */,
 				FA0AB5F118057C0100A9D85C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		FA0AB5F218057C0100A9D85C /* Build configuration list for PBXNativeTarget "SegmentedContainerDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FA0AB5F318057C0100A9D85C /* Debug */,
-				FA0AB5F418057C0100A9D85C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

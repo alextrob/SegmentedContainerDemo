@@ -7,13 +7,19 @@
 //
 
 #import "AppDelegate.h"
+#import "SegmentedContainer.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+	
+	// container is set up with 2 `ContentsViewController`s.
+	SegmentedContainer *container = [[SegmentedContainer alloc] init];
+	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
+	[self.window setRootViewController:nav];
+	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
