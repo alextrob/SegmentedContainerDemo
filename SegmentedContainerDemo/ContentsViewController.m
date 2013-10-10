@@ -32,6 +32,7 @@ static NSString *ReuseIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	[self.view setBackgroundColor:[UIColor yellowColor]];
 	self.refreshControl = [[UIRefreshControl alloc] init];
 	[self.refreshControl addTarget:self action:@selector(refreshControlValueChanged:) forControlEvents:UIControlEventValueChanged];
 }
@@ -45,29 +46,32 @@ static NSString *ReuseIdentifier = @"Cell";
 	[self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:5];
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-	[super didMoveToParentViewController:parent];
-	if (parent) {
-        CGFloat top = parent.topLayoutGuide.length;
+- (void)willMoveToParentViewController:(UIViewController *)parent {
+	[super willMoveToParentViewController:parent];
+	[self fixInsets];
+}
+
+- (void)fixInsets {
+	UIViewController *parent = self.parentViewController;
+	if (parent && parent.automaticallyAdjustsScrollViewInsets) {
+		CGFloat top = parent.topLayoutGuide.length;
         CGFloat bottom = parent.bottomLayoutGuide.length;
 		CGFloat offsetY = self.tableView.contentOffset.y;
-		
 		if (offsetY == 0) {
 			self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, offsetY - top);
 		}
-		
-		// From: http://stackoverflow.com/q/19038949/99714
+		// Adapted from http://stackoverflow.com/q/19038949/99714
 		UIEdgeInsets newInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
         if (self.tableView.contentInset.top != top && !self.refreshControl.isRefreshing) {
 			self.tableView.contentInset = newInsets;
 			self.tableView.scrollIndicatorInsets = newInsets;
         }
-		
-		NSLog(@"***");
-		NSLog(@"tableView.contentOffset.y: %f", self.tableView.contentOffset.y);
-		NSLog(@"parent.topLayoutGuide.length: %f", top);
-		NSLog(@"***");
-    }
+	}
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	[self fixInsets];
 }
 
 - (void)didReceiveMemoryWarning
