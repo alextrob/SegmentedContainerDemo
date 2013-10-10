@@ -36,7 +36,6 @@
 		
 		NSMutableArray *titles = [NSMutableArray arrayWithCapacity:self.childViewControllers.count];
 		for (ContentsViewController *vc in self.childViewControllers) {
-			[self addChildViewController:vc];
 			[titles addObject:[vc.title copy]];
 		}
 		self.segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:titles]];
@@ -51,9 +50,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	[self setAutomaticallyAdjustsScrollViewInsets:NO];
-//	[self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+//	[self setAutomaticallyAdjustsScrollViewInsets:NO];
 }
 
 - (void)segmentedControlValueChanged:(id)sender {
@@ -65,26 +62,25 @@
 	
 	if (!self.currentViewController) {
 		// first time a segment is selected
-		[viewController.view setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-		[viewController.view setFrame:self.view.frame];
+		[self addChildViewController:viewController];
 		[self.view addSubview:viewController.view];
+		[viewController didMoveToParentViewController:self];
+		self.currentViewController = viewController;
 	}
 	else {
 		// swap the existing view with the newly selected one
-		
-		
-		[viewController.view setFrame:self.currentViewController.view.frame];
-		[viewController.tableView setContentInset:self.currentViewController.tableView.contentInset];
-		[viewController.tableView setScrollIndicatorInsets:self.currentViewController.tableView.scrollIndicatorInsets];
-	
+		[self.currentViewController willMoveToParentViewController:nil];
+		[self addChildViewController:viewController];
+			
 		[self transitionFromViewController:self.currentViewController toViewController:viewController duration:0.3f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
 			//
 		} completion:^(BOOL finished) {
-			//
+			[self.currentViewController removeFromParentViewController];
+			[viewController didMoveToParentViewController:self];
+			self.currentViewController = viewController;
 		}];
 	}
 	
-	self.currentViewController = viewController;
 }
 
 - (void)didReceiveMemoryWarning {
