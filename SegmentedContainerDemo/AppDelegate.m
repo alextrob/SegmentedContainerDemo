@@ -20,6 +20,8 @@
 	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
 	[self.window setRootViewController:nav];
 	
+	[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"blank"] forBarMetrics:UIBarMetricsDefault];
+	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

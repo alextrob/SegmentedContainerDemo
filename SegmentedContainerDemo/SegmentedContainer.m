@@ -8,13 +8,14 @@
 
 #import "SegmentedContainer.h"
 #import "ContentsViewController.h"
+#import "CollectionViewController.h"
 
 @interface SegmentedContainer ()
 
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) NSArray *childViewControllers;
 
-@property (weak, nonatomic) ContentsViewController *currentViewController;
+@property (weak, nonatomic) UIViewController *currentViewController;
 
 @end
 
@@ -31,8 +32,14 @@
 		ContentsViewController *vc2 = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
 		[vc2 setCellColor:[UIColor greenColor]];
 		[vc2 setTitle:@"View 2"];
+		
+		CollectionViewController *vc3 = [[CollectionViewController alloc] init];
+		[vc3 setTitle:@"View 3"];
+		
+		CollectionViewController *vc4 = [[CollectionViewController alloc] init];
+		[vc4 setTitle:@"View 4"];
 				
-		[self setChildViewControllers:@[vc1, vc2]];
+		[self setChildViewControllers:@[vc3, vc2, vc1, vc4]];
 		
 		NSMutableArray *titles = [NSMutableArray arrayWithCapacity:self.childViewControllers.count];
 		for (ContentsViewController *vc in self.childViewControllers) {
@@ -50,11 +57,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//	[self setAutomaticallyAdjustsScrollViewInsets:NO];
 }
 
 - (void)segmentedControlValueChanged:(id)sender {
-	ContentsViewController *viewController = [self.childViewControllers objectAtIndex:self.segmentedControl.selectedSegmentIndex];
+	UIViewController *viewController = [self.childViewControllers objectAtIndex:self.segmentedControl.selectedSegmentIndex];
 	
 	if (self.currentViewController == viewController) {
 		return;

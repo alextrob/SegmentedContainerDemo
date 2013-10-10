@@ -53,7 +53,7 @@ static NSString *ReuseIdentifier = @"Cell";
 
 - (void)fixInsets {
 	UIViewController *parent = self.parentViewController;
-	if (parent && parent.automaticallyAdjustsScrollViewInsets) {
+	if (parent) {
 		CGFloat top = parent.topLayoutGuide.length;
         CGFloat bottom = parent.bottomLayoutGuide.length;
 		CGFloat offsetY = self.tableView.contentOffset.y;
