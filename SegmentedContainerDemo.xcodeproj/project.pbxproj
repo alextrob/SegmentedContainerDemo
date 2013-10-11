@@ -17,7 +17,6 @@
 		FA0AB5F718057C4700A9D85C /* SegmentedContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0AB5F618057C4700A9D85C /* SegmentedContainer.m */; };
 		FA0AB5FA18057C5C00A9D85C /* ContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0AB5F918057C5C00A9D85C /* ContentsViewController.m */; };
 		FA10881C1806C9BB00FCD593 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA10881B1806C9BB00FCD593 /* CollectionViewController.m */; };
-		FA10881E18074C5300FCD593 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA10881D18074C5300FCD593 /* Reveal.framework */; };
 		FA10882018074C9300FCD593 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA10881F18074C9300FCD593 /* CFNetwork.framework */; };
 		FA10882218074C9700FCD593 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA10882118074C9700FCD593 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -41,7 +40,6 @@
 		FA0AB5F918057C5C00A9D85C /* ContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsViewController.m; sourceTree = "<group>"; };
 		FA10881A1806C9BB00FCD593 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		FA10881B1806C9BB00FCD593 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		FA10881D18074C5300FCD593 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		FA10881F18074C9300FCD593 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		FA10882118074C9700FCD593 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -56,7 +54,6 @@
 				FA0AB5C918057C0100A9D85C /* CoreGraphics.framework in Frameworks */,
 				FA0AB5CB18057C0100A9D85C /* UIKit.framework in Frameworks */,
 				FA0AB5C718057C0100A9D85C /* Foundation.framework in Frameworks */,
-				FA10881E18074C5300FCD593 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +82,6 @@
 			children = (
 				FA10882118074C9700FCD593 /* QuartzCore.framework */,
 				FA10881F18074C9300FCD593 /* CFNetwork.framework */,
-				FA10881D18074C5300FCD593 /* Reveal.framework */,
 				FA0AB5C618057C0100A9D85C /* Foundation.framework */,
 				FA0AB5C818057C0100A9D85C /* CoreGraphics.framework */,
 				FA0AB5CA18057C0100A9D85C /* UIKit.framework */,
@@ -291,7 +287,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SegmentedContainerDemo/SegmentedContainerDemo-Prefix.pch";
 				INFOPLIST_FILE = "SegmentedContainerDemo/SegmentedContainerDemo-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -309,7 +304,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SegmentedContainerDemo/SegmentedContainerDemo-Prefix.pch";
 				INFOPLIST_FILE = "SegmentedContainerDemo/SegmentedContainerDemo-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

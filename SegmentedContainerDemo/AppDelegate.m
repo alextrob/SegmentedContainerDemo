@@ -8,17 +8,33 @@
 
 #import "AppDelegate.h"
 #import "SegmentedContainer.h"
+#import "ContentsViewController.h"
+#import "CollectionViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	
-	// container is set up with 2 `ContentsViewController`s.
+		
 	SegmentedContainer *container = [[SegmentedContainer alloc] init];
-	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
-	[self.window setRootViewController:nav];
+	[container setTitle:@"Container"];
+	UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:container];
+	
+	
+	CollectionViewController *collectionVC = [[CollectionViewController alloc] init];
+	[collectionVC setTitle:@"Collection"];
+	UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:collectionVC];
+
+	ContentsViewController *contentsVC = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
+	[contentsVC setCellColor:[UIColor orangeColor]];
+	[contentsVC setTitle:@"Table"];
+	UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:contentsVC];
+	
+	UITabBarController *tabBar = [[UITabBarController alloc] init];
+	[tabBar setViewControllers:@[nav1, nav2, nav3]];
+
+	[self.window setRootViewController:tabBar];
 	
 	[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"blank"] forBarMetrics:UIBarMetricsDefault];
 	

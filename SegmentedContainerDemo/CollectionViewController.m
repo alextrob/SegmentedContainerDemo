@@ -29,9 +29,7 @@ static NSString *ReuseIdentifier = @"Cell";
 	[self.collectionView setBackgroundColor:[UIColor yellowColor]];
 	self.refreshControl = [[UIRefreshControl alloc] init];
 	[self.refreshControl addTarget:self action:@selector(refreshControlValueChanged:) forControlEvents:UIControlEventValueChanged];
-	[self.collectionView addSubview:self.refreshControl];
-		
-	[self.collectionView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+	[self.collectionView addSubview:self.refreshControl];		
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,34 +40,19 @@ static NSString *ReuseIdentifier = @"Cell";
 	[self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:5];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	[self fixInsets];
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
 - (void)willMoveToParentViewController:(UIViewController *)parent {
 	[super willMoveToParentViewController:parent];
-}
-
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-	[super didMoveToParentViewController:parent];
 	[self fixInsets];
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-	[self fixInsets];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)fixInsets {
-//	return;
 	UIViewController *parent = self.parentViewController;
 	if (parent) {
-		
-		// WTF!? Comment this line out to see why it's here.
-		// Spoiler: self.view's frame.y is set to 20 (i.e. the height of the status bar).
-		[self.view setFrame:parent.view.frame];
-
 		CGFloat top = parent.topLayoutGuide.length;
         CGFloat bottom = parent.bottomLayoutGuide.length;
 		CGFloat offsetY = self.collectionView.contentOffset.y;
@@ -83,6 +66,11 @@ static NSString *ReuseIdentifier = @"Cell";
 			self.collectionView.scrollIndicatorInsets = newInsets;
         }
 	}
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Collection view data source
@@ -100,6 +88,5 @@ static NSString *ReuseIdentifier = @"Cell";
 	[cell setBackgroundColor:[UIColor redColor]];
 	return cell;
 }
-
 
 @end

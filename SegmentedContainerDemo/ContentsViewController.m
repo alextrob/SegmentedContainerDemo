@@ -29,8 +29,7 @@ static NSString *ReuseIdentifier = @"Cell";
 	[self.view setFrame:self.parentViewController.view.frame];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	[self.view setBackgroundColor:[UIColor yellowColor]];
 	self.refreshControl = [[UIRefreshControl alloc] init];
@@ -51,6 +50,11 @@ static NSString *ReuseIdentifier = @"Cell";
 	[self fixInsets];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	[self fixInsets];
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
 - (void)fixInsets {
 	UIViewController *parent = self.parentViewController;
 	if (parent) {
@@ -67,11 +71,6 @@ static NSString *ReuseIdentifier = @"Cell";
 			self.tableView.scrollIndicatorInsets = newInsets;
         }
 	}
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-	[self fixInsets];
 }
 
 - (void)didReceiveMemoryWarning

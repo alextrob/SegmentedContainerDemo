@@ -25,21 +25,24 @@
 	self = [super init];
 	if (self) {
 		
-		ContentsViewController *vc1 = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
-		[vc1 setCellColor:[UIColor blueColor]];
+		CollectionViewController *vc1 = [[CollectionViewController alloc] init];
 		[vc1 setTitle:@"View 1"];
 		
 		ContentsViewController *vc2 = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
-		[vc2 setCellColor:[UIColor greenColor]];
+		[vc2 setCellColor:[UIColor blueColor]];
 		[vc2 setTitle:@"View 2"];
 		
 		CollectionViewController *vc3 = [[CollectionViewController alloc] init];
 		[vc3 setTitle:@"View 3"];
 		
-		CollectionViewController *vc4 = [[CollectionViewController alloc] init];
+		ContentsViewController *vc4 = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
+		[vc4 setCellColor:[UIColor greenColor]];
 		[vc4 setTitle:@"View 4"];
 				
-		[self setChildViewControllers:@[vc3, vc2, vc1, vc4]];
+		[self setChildViewControllers:@[vc1,
+										vc2,
+										vc3,
+										vc4]];
 		
 		NSMutableArray *titles = [NSMutableArray arrayWithCapacity:self.childViewControllers.count];
 		for (ContentsViewController *vc in self.childViewControllers) {
@@ -60,6 +63,7 @@
 }
 
 - (void)segmentedControlValueChanged:(id)sender {
+	
 	UIViewController *viewController = [self.childViewControllers objectAtIndex:self.segmentedControl.selectedSegmentIndex];
 	
 	if (self.currentViewController == viewController) {
@@ -69,6 +73,7 @@
 	if (!self.currentViewController) {
 		// first time a segment is selected
 		[self addChildViewController:viewController];
+		[viewController.view setFrame:self.view.bounds];
 		[self.view addSubview:viewController.view];
 		[viewController didMoveToParentViewController:self];
 		self.currentViewController = viewController;
@@ -77,16 +82,18 @@
 		// swap the existing view with the newly selected one
 		[self.currentViewController willMoveToParentViewController:nil];
 		[self addChildViewController:viewController];
-			
+		
 		[self transitionFromViewController:self.currentViewController toViewController:viewController duration:0.3f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
 			//
 		} completion:^(BOOL finished) {
+			
+			[viewController.view setFrame:self.view.bounds];
+			
 			[self.currentViewController removeFromParentViewController];
 			[viewController didMoveToParentViewController:self];
 			self.currentViewController = viewController;
 		}];
 	}
-	
 }
 
 - (void)didReceiveMemoryWarning {
