@@ -47,30 +47,10 @@ static NSString *ReuseIdentifier = @"Cell";
 
 - (void)willMoveToParentViewController:(UIViewController *)parent {
 	[super willMoveToParentViewController:parent];
-	[self fixInsets];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	[self fixInsets];
 	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-}
-
-- (void)fixInsets {
-	UIViewController *parent = self.parentViewController;
-	if (parent) {
-		CGFloat top = parent.topLayoutGuide.length;
-        CGFloat bottom = parent.bottomLayoutGuide.length;
-		CGFloat offsetY = self.tableView.contentOffset.y;
-		if (offsetY == 0) {
-			self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, offsetY - top);
-		}
-		// Adapted from http://stackoverflow.com/q/19038949/99714
-		UIEdgeInsets newInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
-        if (self.tableView.contentInset.top != top && !self.refreshControl.isRefreshing) {
-			self.tableView.contentInset = newInsets;
-			self.tableView.scrollIndicatorInsets = newInsets;
-        }
-	}
 }
 
 - (void)didReceiveMemoryWarning

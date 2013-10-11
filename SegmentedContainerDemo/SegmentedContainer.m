@@ -21,31 +21,14 @@
 
 @implementation SegmentedContainer
 
-- (id)init {
+- (id)initWithChildViewControllers:(NSArray *)childViewControllers {
 	self = [super init];
 	if (self) {
 		
-		CollectionViewController *vc1 = [[CollectionViewController alloc] init];
-		[vc1 setTitle:@"View 1"];
-		
-		ContentsViewController *vc2 = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
-		[vc2 setCellColor:[UIColor blueColor]];
-		[vc2 setTitle:@"View 2"];
-		
-		CollectionViewController *vc3 = [[CollectionViewController alloc] init];
-		[vc3 setTitle:@"View 3"];
-		
-		ContentsViewController *vc4 = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
-		[vc4 setCellColor:[UIColor greenColor]];
-		[vc4 setTitle:@"View 4"];
-				
-		[self setChildViewControllers:@[vc1,
-										vc2,
-										vc3,
-										vc4]];
+		[self setChildViewControllers:childViewControllers];
 		
 		NSMutableArray *titles = [NSMutableArray arrayWithCapacity:self.childViewControllers.count];
-		for (ContentsViewController *vc in self.childViewControllers) {
+		for (UIViewController *vc in self.childViewControllers) {
 			[titles addObject:[vc.title copy]];
 		}
 		self.segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:titles]];
@@ -75,6 +58,7 @@
 		[self addChildViewController:viewController];
 		[viewController.view setFrame:self.view.bounds];
 		[self.view addSubview:viewController.view];
+		[self fixInsets:viewController];
 		[viewController didMoveToParentViewController:self];
 		self.currentViewController = viewController;
 	}
@@ -90,6 +74,7 @@
 			[viewController.view setFrame:self.view.bounds];
 			
 			[self.currentViewController removeFromParentViewController];
+			[self fixInsets:viewController];
 			[viewController didMoveToParentViewController:self];
 			self.currentViewController = viewController;
 		}];
@@ -99,6 +84,51 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	[self fixInsets:self.currentViewController];
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
+- (void)fixInsets:(UIViewController *)viewController {
+	UIScrollView *collectionOrTableView;
+	if ([viewController isKindOfClass:[UITableViewController class]]) {
+		collectionOrTableView = [(UITableViewController *)viewController tableView];
+	}
+	else if ([viewController isKindOfClass:[UICollectionViewController class]]) {
+		collectionOrTableView = [(UICollectionViewController *)viewController collectionView];
+	}
+	else {
+		return;
+	}
+	
+	UIRefreshControl *refreshControl;
+	if ([viewController respondsToSelector:@selector(refreshControl)]) {
+		refreshControl = [(id)viewController refreshControl];
+	}
+	
+	if (collectionOrTableView) {
+		CGFloat top = self.topLayoutGuide.length;
+        CGFloat bottom = self.bottomLayoutGuide.length;
+		CGFloat offsetY = collectionOrTableView.contentOffset.y;
+		if (offsetY == 0) {
+			collectionOrTableView.contentOffset = CGPointMake(collectionOrTableView.contentOffset.x, offsetY - top);
+		}
+		
+		UIEdgeInsets newInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
+        if (collectionOrTableView.contentInset.top != top) {
+			// if there's no refresh control OR there's a refresh control but it *isn't* refreshing.
+			if (!refreshControl || (refreshControl && !refreshControl.isRefreshing)) {
+				[UIView animateWithDuration:0.3f animations:^{
+					collectionOrTableView.contentInset = newInsets;
+					collectionOrTableView.scrollIndicatorInsets = newInsets;
+				} completion:^(BOOL finished) {
+					//
+				}];
+			}
+        }
+	}
 }
 
 @end

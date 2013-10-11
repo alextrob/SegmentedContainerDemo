@@ -16,11 +16,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-		
-	SegmentedContainer *container = [[SegmentedContainer alloc] init];
+	
+	CollectionViewController *vc1 = [[CollectionViewController alloc] init];
+	[vc1 setTitle:@"View 1"];
+	
+	ContentsViewController *vc2 = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
+	[vc2 setCellColor:[UIColor blueColor]];
+	[vc2 setTitle:@"View 2"];
+	
+	CollectionViewController *vc3 = [[CollectionViewController alloc] init];
+	[vc3 setTitle:@"View 3"];
+	
+	ContentsViewController *vc4 = [[ContentsViewController alloc] initWithStyle:UITableViewStylePlain];
+	[vc4 setCellColor:[UIColor greenColor]];
+	[vc4 setTitle:@"View 4"];
+	
+	SegmentedContainer *container = [[SegmentedContainer alloc] initWithChildViewControllers:@[vc1, vc2, vc3, vc4]];
 	[container setTitle:@"Container"];
 	UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:container];
-	
 	
 	CollectionViewController *collectionVC = [[CollectionViewController alloc] init];
 	[collectionVC setTitle:@"Collection"];

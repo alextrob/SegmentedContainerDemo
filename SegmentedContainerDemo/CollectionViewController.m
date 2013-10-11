@@ -41,31 +41,11 @@ static NSString *ReuseIdentifier = @"Cell";
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	[self fixInsets];
 	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent {
 	[super willMoveToParentViewController:parent];
-	[self fixInsets];
-}
-
-- (void)fixInsets {
-	UIViewController *parent = self.parentViewController;
-	if (parent) {
-		CGFloat top = parent.topLayoutGuide.length;
-        CGFloat bottom = parent.bottomLayoutGuide.length;
-		CGFloat offsetY = self.collectionView.contentOffset.y;
-		if (offsetY == 0) {
-			self.collectionView.contentOffset = CGPointMake(self.collectionView.contentOffset.x, offsetY - top);
-		}
-		// Adapted from http://stackoverflow.com/q/19038949/99714
-		UIEdgeInsets newInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
-        if (self.collectionView.contentInset.top != top && !self.refreshControl.isRefreshing) {
-			self.collectionView.contentInset = newInsets;
-			self.collectionView.scrollIndicatorInsets = newInsets;
-        }
-	}
 }
 
 - (void)didReceiveMemoryWarning {

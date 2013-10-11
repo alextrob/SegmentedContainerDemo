@@ -10,4 +10,6 @@
 
 @interface SegmentedContainer : UIViewController
 
+- (id)initWithChildViewControllers:(NSArray *)childViewControllers;
+
 @end
